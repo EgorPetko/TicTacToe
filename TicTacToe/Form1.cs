@@ -15,13 +15,29 @@ namespace TicTacToe
     public partial class Form1 : Form
     {
         Game game;
+        
         public Form1()
         {
             InitializeComponent();
-            game = new Game(new MainMenuState(),this);
+            List<Control> Cages = new List<Control>();
+            foreach (Control con in panelCages.Controls)
+            {
+                Cages.Add(con);
+            }
+            game = new Game(new MainMenuState(),this, Cages);
             panelMain.Size = this.Size;
             panelGame.Visible = false;
+            var button = new Button();
             panelGame.Dock = DockStyle.Fill;
+            //Cages = panelCages.Controls.ToString;
+            /*foreach (var cage in panelCages.Controls)
+            {
+                Cages.Add(cage);
+            }*/
+            //panelCages.Controls.Cast();
+            //Test(panelCages.Controls.ToString());
+
+            game.gameCages.ReSize();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -76,6 +92,28 @@ namespace TicTacToe
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelCages_Resize(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            
+            if (game == null) return;
+            
+            if (game.gameCages != null)
+            {
+                //Test("sd");
+                game.gameCages.ReSize();
+            }
         }
     }
      
