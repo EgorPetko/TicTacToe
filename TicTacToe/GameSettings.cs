@@ -2,6 +2,7 @@
 {
     public class GameSettings
     {
+        public NamePlayer WhoFirst = new NamePlayer();
         public Rate GameField;
         public int WinStrLength;
         public int Indents;
@@ -10,6 +11,7 @@
             GameField = new Rate(width, height);
             WinStrLength = winStrLength;
             Indents = indents;
+            WhoFirst = NamePlayer.Cross;
         }
     }
     public class Rate
@@ -22,5 +24,9 @@
         public int Width { get; set;  }
         public int Height { get; set; }
 
+    }
+    public enum NamePlayer{
+        Cross,
+        Сircle
     }
 }

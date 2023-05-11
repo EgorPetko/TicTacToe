@@ -14,8 +14,9 @@ namespace TicTacToe
 {
     public partial class Form1 : Form
     {
-        Game game;
-        
+        public Game game;
+        public ProgramState programState { get; set; }
+       
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace TicTacToe
             {
                 Cages.Add(con);
             }
-            game = new Game(new MainMenuState(),this, Cages);
+            game = new Game(this, Cages);
             panelMain.Size = this.Size;
             panelGame.Visible = false;
             var button = new Button();
@@ -37,7 +38,8 @@ namespace TicTacToe
             //panelCages.Controls.Cast();
             //Test(panelCages.Controls.ToString());
 
-            game.gameCages.ReSize();
+            game.ReSize();
+            programState = new MainMenuState();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -45,7 +47,7 @@ namespace TicTacToe
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            game.StartGame();
+            StartGame();
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -86,12 +88,12 @@ namespace TicTacToe
 
         private void button14_Click(object sender, EventArgs e)
         {
-            game.EndGame();
+            EndGame();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -112,11 +114,52 @@ namespace TicTacToe
             if (game.gameCages != null)
             {
                 //Test("sd");
-                game.gameCages.ReSize();
+                game.ReSize();
             }
         }
+        public void StartGame()
+        {
+            programState.StartGame(this);
+        }
+        public void EndGame()
+        {
+            programState.EndGame(this);
+        }
     }
-     
-    
+
+    public class ProgramState
+    {
+        public virtual void StartGame(Form1 form)
+        {
+            Console.WriteLine("nothing");
+        }
+        public virtual void EndGame(Form1 form)
+        {
+            Console.WriteLine("nothing");
+        }
+    }
+    public class MainMenuState : ProgramState
+    {
+        public override void StartGame(Form1 form)
+        {
+            Console.WriteLine("thing");
+
+            form.CloseMainMenu();
+            form.OpenGameMenu();
+            form.game.ReSize();
+            form.programState = new PlayGameState();
+        }
+    }
+    public class PlayGameState : ProgramState
+    {
+        public override void EndGame(Form1 form)
+        {
+            Console.WriteLine("thing");
+            form.OpenMainMenu();
+            form.CloseGameMenu();
+            form.programState = new MainMenuState();
+
+        }
+    }
 }
 
