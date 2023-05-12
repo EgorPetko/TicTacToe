@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelMain = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.panelMain.SuspendLayout();
             this.panelGame.SuspendLayout();
             this.panelCages.SuspendLayout();
@@ -77,6 +79,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Продолжить";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -276,6 +279,13 @@
             this.button16.TabIndex = 0;
             this.button16.Text = "сначала";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // imageList2
+            // 
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Form1
             // 
@@ -320,6 +330,7 @@
         System.Windows.Forms.Button button14;
         System.Windows.Forms.Button button15;
         System.Windows.Forms.Button button16;
+        private System.Windows.Forms.ImageList imageList2;
     }
 }
 

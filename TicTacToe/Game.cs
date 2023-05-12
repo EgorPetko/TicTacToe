@@ -16,7 +16,7 @@ namespace GameNamespace
         public List<GameCage> gameCages;
         public GameSettings settings;
         public GameState gameState { get; set; }
-
+        public NamePlayer namePlayer { get; set; }
         private int[,] logicMatrix;
         private Dictionary<object, (int, int)> cagesDict = new Dictionary<object, (int, int)>();
         public Dictionary<object, GameCage> gameCageByObject = new Dictionary<object, GameCage>();
@@ -26,7 +26,8 @@ namespace GameNamespace
             this.form = form;
             settings = new GameSettings();
             gameState = new WinWindow();
-            gameState.NextTurn(this,null);
+            namePlayer = NamePlayer.Noting;
+            //gameState.NextTurn(this,null);
             GameCagesConstruct(cages);
 
         }
@@ -56,7 +57,30 @@ namespace GameNamespace
         }
         public void Cage_Click(object sender, EventArgs e)
         {
+            var ob = new WinWindow();
+            //form.Test(ob.ToString() + " " + gameState.ToString());
+            if(gameState.ToString() == ob.ToString()) NextTurn(sender);
             NextTurn(sender);
+            NamePlayer whoWin = WhoWin(sender);
+
+            if (NamePlayer.Noting != whoWin)
+            {
+                Win();
+                form.Test("win" + whoWin.ToString());
+            }
+            else
+            {
+                bool fl = true;
+                foreach(int to in logicMatrix)
+                {
+                    if (to == 0) fl = false;
+                }
+                if (fl)
+                {
+                    clear();
+                }
+            }
+
         }
         public bool CheckLogicMatrixByObject(object obj)
         {
@@ -69,7 +93,7 @@ namespace GameNamespace
             if (whoPalyer == NamePlayer.Сircle) an = 2;
             logicMatrix[cagesDict[obj].Item1, cagesDict[obj].Item2] = an;
         }
-       public void ReSize()
+        public void ReSize()
         {
             Rate sizePanel = new Rate(form.panelCages.Width, form.panelCages.Height);
 
@@ -94,13 +118,95 @@ namespace GameNamespace
                 x = 0;
             }
         }
-        public virtual void NextTurn(object obj)
+        public NamePlayer WhoWin(object obj)
+        {
+            NamePlayer whoPlay;
+            var IJ = cagesDict[obj];
+            int I = IJ.Item1, J = IJ.Item2;
+            int w = logicMatrix[I, J],dl = settings.WinStrLength;
+            int i = I, j = J,sh = 0;
+            if (w == 2) whoPlay = NamePlayer.Сircle;
+            else
+            if (w == 1) whoPlay = NamePlayer.Cross;
+            else whoPlay = NamePlayer.Noting;
+
+            while (i>0&&j>0)
+            {
+                i--;
+                j--;
+            }
+
+            while (j < settings.GameField.Width && i < settings.GameField.Height&& logicMatrix[i, j] == w) 
+            {
+                sh++;
+                i++;
+                j++;
+            }
+            if (sh >= dl) return whoPlay;
+            i = I; j = J; sh = 0;
+            while (i < settings.GameField.Height - 1 && j > 0)
+            {
+                i++;
+                j--;
+            }
+            while (j < settings.GameField.Width&& i >= 0 && logicMatrix[i, j] == w)
+            {
+                sh++;
+                i--;
+                j++;
+            }
+            if (sh >= dl) return whoPlay;
+            i = I; j = J; sh = 0;
+            while (i > 0)
+            {
+                i--;
+            }
+            while (i < settings.GameField.Height&& logicMatrix[i, j] == w)
+            {
+                sh++;
+                i++;
+            }
+            if (sh >= dl) return whoPlay;
+            i = I; j = J; sh = 0;
+            while (j > 0)
+            {
+                j--;
+            }
+            while (j < settings.GameField.Width && logicMatrix[i, j] == w)
+            {
+                sh++;
+                j++;
+            }
+            if (sh >= dl) return whoPlay;
+            return NamePlayer.Noting;
+        } 
+        public void NextTurn(object obj)
         {
             gameState.NextTurn(this,obj);
         }
-        public virtual void Win()
+        public void Win()
         {
             gameState.Win(this,new object());
+        }
+
+        public void clear()
+        {
+            int number = 0;
+            for (int i = 0; i < settings.GameField.Height; i++)
+            {
+                for (int j = 0; j < settings.GameField.Width; j++)
+                {
+                    if (gameCages.Count <= number) return;
+                    logicMatrix[i, j] = 0;
+                    gameCages[number++].ClearCage();
+
+                }
+            }
+            gameState = new WinWindow();
+        }
+        public void updateScore(NamePlayer whoWin)
+        {
+
         }
 
     }
@@ -121,16 +227,22 @@ namespace GameNamespace
     {
         public override void NextTurn(Game game,object obj)
         {
-            if (!game.CheckLogicMatrixByObject(obj)) return;
+            //game.form.Test("TurnCross");
+
+            //if (!game.CheckLogicMatrixByObject(obj)) return;
             GameCage gameCage = game.gameCageByObject[obj];
-            gameCage.CageControl.BackColor = Color.Black;
+            //game.form.Test(obj.ToString() + " " + gameCage.CageControl.ToString() + " " + gameCage.CageState.ToString());
+            if (gameCage.whoseCage != NamePlayer.Noting ) return;
+            gameCage.DoСircle();
+            gameCage.CageControl.BackColor = Color.White;
             game.cangeLogicMatrics(obj, NamePlayer.Cross);
             game.gameState = new TurnСircle();
-
         }
         public override void Win(Game game, object obj)
         {
             game.gameState = new WinWindow();
+            game.clear();
+            game.updateScore(NamePlayer.Cross);
         }
 
     }
@@ -138,27 +250,41 @@ namespace GameNamespace
     {
         public override void NextTurn(Game game, object obj)
         {
-            if (!game.CheckLogicMatrixByObject(obj)) return;
+            //game.form.Test("TurnСircle");
+
+            //if (!game.CheckLogicMatrixByObject(obj)) return;
             GameCage gameCage = game.gameCageByObject[obj];
+            //game.form.Test(obj.ToString() + " " + gameCage.CageControl.ToString());
+            if (gameCage.whoseCage != NamePlayer.Noting) return;
+            gameCage.DoCross();
             gameCage.CageControl.BackColor = Color.Blue;
             game.cangeLogicMatrics(obj, NamePlayer.Сircle);
             game.gameState = new TurnCross();
+
         }
         public override void Win(Game game, object obj)
         {
             game.gameState = new WinWindow();
+            game.clear();
+            game.updateScore(NamePlayer.Сircle);
         }
     }
     public class WinWindow : GameState
     {
         public override void NextTurn(Game game, object obj)
         {
-            if (game.settings.WhoFirst == NamePlayer.Cross) game.gameState = new TurnCross();
+            if (game.settings.WhoFirst == NamePlayer.Cross)
+            {
+                game.gameState = new TurnCross();
+            }
             else
-            if (game.settings.WhoFirst == NamePlayer.Сircle) game.gameState = new TurnСircle();
+            if (game.settings.WhoFirst == NamePlayer.Сircle) 
+            { 
+                game.gameState = new TurnСircle(); 
+            }
             else
                 game.form.Test("result null!!!");
-
+            
         }
 
     }

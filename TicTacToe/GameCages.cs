@@ -14,6 +14,7 @@ namespace GamePlayButtonNamespace
     {
         public Control CageControl;
         public GameCageState CageState { get; set; }
+        public NamePlayer whoseCage = NamePlayer.Noting;
         public GameCage(GameCageState gameCageState, Control control)
         {
             CageControl = control;
@@ -23,10 +24,12 @@ namespace GamePlayButtonNamespace
         {
             CageControl = control;
             CageState = new NothingState();
+            CageControl.BackColor = Color.Black;
         }
         public void ClearCage()
         {
             CageState.ClearCage(this);
+            
         }
         public void DoCross()
         {
@@ -66,6 +69,8 @@ namespace GamePlayButtonNamespace
         {
             Console.WriteLine("thing");
             gameButton.CageState = new NothingState();
+            gameButton.CageControl.BackColor = Color.Black;
+            gameButton.whoseCage = NamePlayer.Noting;
         }
     }
     public class СircleState : GameCageState
@@ -74,19 +79,23 @@ namespace GamePlayButtonNamespace
         {
             Console.WriteLine("thing");
             gameButton.CageState = new NothingState();
+            gameButton.CageControl.BackColor = Color.Black;
+            gameButton.whoseCage = NamePlayer.Noting;
         }
     }
     public class NothingState : GameCageState
     {
         public override void DoCross(GameCage gameButton)
         {
-            Console.WriteLine("thing");
+            //gameButton.CageControl.BackColor = Color.White;
             gameButton.CageState = new CrossState();
+            gameButton.whoseCage = NamePlayer.Cross;
         }
         public override void DoСircle(GameCage gameButton)
         {
-            Console.WriteLine("thing");
+            //gameButton.CageControl.BackColor = Color.Black;
             gameButton.CageState = new СircleState();
+            gameButton.whoseCage = NamePlayer.Сircle;
         }
     }
 

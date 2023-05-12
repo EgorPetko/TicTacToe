@@ -16,7 +16,7 @@ namespace TicTacToe
     {
         public Game game;
         public ProgramState programState { get; set; }
-       
+        
         public Form1()
         {
             InitializeComponent();
@@ -48,6 +48,7 @@ namespace TicTacToe
         private void button1_Click(object sender, EventArgs e)
         {
             StartGame();
+            game.clear();
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -115,6 +116,7 @@ namespace TicTacToe
             {
                 //Test("sd");
                 game.ReSize();
+
             }
         }
         public void StartGame()
@@ -124,6 +126,22 @@ namespace TicTacToe
         public void EndGame()
         {
             programState.EndGame(this);
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            game.clear();
+            //game.gameState = new WinWindow();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //var ob = new NothingState();
+            //this.Test("" + game.gameState.ToString() + " " + ob.ToString());
+            if (!(game.gameState is WinWindow))
+            {
+                StartGame();
+            }
         }
     }
 

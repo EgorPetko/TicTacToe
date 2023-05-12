@@ -27,6 +27,7 @@
     }
     public enum NamePlayer{
         Cross,
-        Сircle
+        Сircle,
+        Noting
     }
 }
