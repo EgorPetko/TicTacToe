@@ -20,11 +20,11 @@ namespace GameNamespace
         private int[,] logicMatrix;
         private Dictionary<object, (int, int)> cagesDict = new Dictionary<object, (int, int)>();
         public Dictionary<object, GameCage> gameCageByObject = new Dictionary<object, GameCage>();
-        public Game(Form1 form, List<Control> cages)
+        public Game(Form1 form, List<Control> cages, GameSettings settings)
         {
             //this.gameState = gameState;
             this.form = form;
-            settings = new GameSettings();
+            this.settings = settings;
             gameState = new WinWindow();
             namePlayer = NamePlayer.Noting;
             //gameState.NextTurn(this,null);
@@ -191,7 +191,6 @@ namespace GameNamespace
         {
             gameState.Win(this,new object());
         }
-
         public void clear()
         {
             int number = 0;

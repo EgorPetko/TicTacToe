@@ -52,10 +52,23 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.panelSetting = new System.Windows.Forms.Panel();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
             this.panelGame.SuspendLayout();
             this.panelCages.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panelSetting.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
@@ -70,7 +83,7 @@
             this.panelMain.Controls.Add(this.button2);
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(200, 515);
+            this.panelMain.Size = new System.Drawing.Size(314, 527);
             this.panelMain.TabIndex = 0;
             // 
             // button4
@@ -101,6 +114,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Настройки";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
@@ -120,9 +134,9 @@
             this.panelGame.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panelGame.Controls.Add(this.panelCages);
             this.panelGame.Controls.Add(this.panel1);
-            this.panelGame.Location = new System.Drawing.Point(210, 12);
+            this.panelGame.Location = new System.Drawing.Point(320, 0);
             this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(693, 429);
+            this.panelGame.Size = new System.Drawing.Size(876, 93);
             this.panelGame.TabIndex = 3;
             // 
             // panelCages
@@ -141,9 +155,8 @@
             this.panelCages.Controls.Add(this.button13);
             this.panelCages.Controls.Add(this.button5);
             this.panelCages.Location = new System.Drawing.Point(254, 3);
-            this.panelCages.MinimumSize = new System.Drawing.Size(401, 401);
             this.panelCages.Name = "panelCages";
-            this.panelCages.Size = new System.Drawing.Size(436, 423);
+            this.panelCages.Size = new System.Drawing.Size(619, 87);
             this.panelCages.TabIndex = 10;
             this.panelCages.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panelCages.Resize += new System.EventHandler(this.panelCages_Resize);
@@ -151,9 +164,9 @@
             // button8
             // 
             this.button8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button8.Location = new System.Drawing.Point(8, 287);
+            this.button8.Location = new System.Drawing.Point(51, -58);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(128, 128);
+            this.button8.Size = new System.Drawing.Size(55, 58);
             this.button8.TabIndex = 3;
             this.button8.Text = "7";
             this.button8.UseVisualStyleBackColor = true;
@@ -161,9 +174,9 @@
             // button7
             // 
             this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button7.Location = new System.Drawing.Point(8, 142);
+            this.button7.Location = new System.Drawing.Point(51, -122);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(128, 139);
+            this.button7.Size = new System.Drawing.Size(56, 58);
             this.button7.TabIndex = 2;
             this.button7.Text = "4";
             this.button7.UseVisualStyleBackColor = true;
@@ -171,9 +184,9 @@
             // button11
             // 
             this.button11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button11.Location = new System.Drawing.Point(142, 287);
+            this.button11.Location = new System.Drawing.Point(113, -58);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(154, 128);
+            this.button11.Size = new System.Drawing.Size(55, 58);
             this.button11.TabIndex = 6;
             this.button11.Text = "8";
             this.button11.UseVisualStyleBackColor = true;
@@ -181,9 +194,9 @@
             // button6
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.Location = new System.Drawing.Point(302, 8);
+            this.button6.Location = new System.Drawing.Point(174, -186);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(128, 128);
+            this.button6.Size = new System.Drawing.Size(57, 58);
             this.button6.TabIndex = 0;
             this.button6.Text = "3";
             this.button6.UseVisualStyleBackColor = true;
@@ -191,9 +204,9 @@
             // button9
             // 
             this.button9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button9.Location = new System.Drawing.Point(302, 287);
+            this.button9.Location = new System.Drawing.Point(174, -58);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(128, 128);
+            this.button9.Size = new System.Drawing.Size(57, 58);
             this.button9.TabIndex = 4;
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = true;
@@ -202,9 +215,9 @@
             // 
             this.button10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button10.Location = new System.Drawing.Point(302, 142);
+            this.button10.Location = new System.Drawing.Point(174, -122);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(128, 139);
+            this.button10.Size = new System.Drawing.Size(57, 58);
             this.button10.TabIndex = 5;
             this.button10.Text = "6";
             this.button10.UseVisualStyleBackColor = true;
@@ -213,9 +226,9 @@
             // 
             this.button12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button12.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button12.Location = new System.Drawing.Point(142, 142);
+            this.button12.Location = new System.Drawing.Point(110, -122);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(154, 139);
+            this.button12.Size = new System.Drawing.Size(58, 58);
             this.button12.TabIndex = 7;
             this.button12.Text = "5";
             this.button12.UseVisualStyleBackColor = true;
@@ -223,9 +236,9 @@
             // button13
             // 
             this.button13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button13.Location = new System.Drawing.Point(142, 8);
+            this.button13.Location = new System.Drawing.Point(113, -186);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(154, 128);
+            this.button13.Size = new System.Drawing.Size(55, 58);
             this.button13.TabIndex = 8;
             this.button13.Text = "2";
             this.button13.UseVisualStyleBackColor = true;
@@ -233,9 +246,9 @@
             // button5
             // 
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.Location = new System.Drawing.Point(8, 8);
+            this.button5.Location = new System.Drawing.Point(51, -186);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(128, 128);
+            this.button5.Size = new System.Drawing.Size(56, 58);
             this.button5.TabIndex = 1;
             this.button5.Text = "1";
             this.button5.UseVisualStyleBackColor = true;
@@ -252,7 +265,7 @@
             this.panel1.Controls.Add(this.button16);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(245, 423);
+            this.panel1.Size = new System.Drawing.Size(245, 87);
             this.panel1.TabIndex = 9;
             // 
             // label2
@@ -260,7 +273,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(165, 346);
+            this.label2.Location = new System.Drawing.Point(206, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 39);
             this.label2.TabIndex = 6;
@@ -271,7 +284,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(46, 346);
+            this.label1.Location = new System.Drawing.Point(3, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 39);
             this.label1.TabIndex = 5;
@@ -305,12 +318,146 @@
             this.imageList2.Images.SetKeyName(1, "крестик.png");
             this.imageList2.Images.SetKeyName(2, "Nothing.png");
             // 
+            // panelSetting
+            // 
+            this.panelSetting.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panelSetting.Controls.Add(this.radioButton2);
+            this.panelSetting.Controls.Add(this.textBox3);
+            this.panelSetting.Controls.Add(this.label5);
+            this.panelSetting.Controls.Add(this.textBox2);
+            this.panelSetting.Controls.Add(this.label4);
+            this.panelSetting.Controls.Add(this.label3);
+            this.panelSetting.Controls.Add(this.textBox1);
+            this.panelSetting.Controls.Add(this.radioButton1);
+            this.panelSetting.Controls.Add(this.button18);
+            this.panelSetting.Controls.Add(this.button17);
+            this.panelSetting.Controls.Add(this.button15);
+            this.panelSetting.Location = new System.Drawing.Point(320, 99);
+            this.panelSetting.Name = "panelSetting";
+            this.panelSetting.Size = new System.Drawing.Size(882, 356);
+            this.panelSetting.TabIndex = 4;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.radioButton2.Checked = true;
+            this.radioButton2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.radioButton2.Location = new System.Drawing.Point(3, 39);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(178, 20);
+            this.radioButton2.TabIndex = 10;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Крестики ходят нолики";
+            this.radioButton2.UseVisualStyleBackColor = false;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(193, 136);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 22);
+            this.textBox3.TabIndex = 9;
+            this.textBox3.Text = "3";
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(129, 16);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Длина для победы ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(193, 108);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.TabIndex = 7;
+            this.textBox2.Text = "3";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(152, 16);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Высота игрового поля";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(155, 16);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Ширина игрового поля";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(193, 80);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "3";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.radioButton1.Location = new System.Drawing.Point(3, 3);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(166, 20);
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.Text = "первые ходят нолики";
+            this.radioButton1.UseVisualStyleBackColor = false;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // button18
+            // 
+            this.button18.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button18.Location = new System.Drawing.Point(324, 330);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(243, 23);
+            this.button18.TabIndex = 2;
+            this.button18.Text = "в главное меню";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button17
+            // 
+            this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button17.Location = new System.Drawing.Point(759, 330);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(120, 23);
+            this.button17.TabIndex = 1;
+            this.button17.Text = "по умолчанию";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button15.Location = new System.Drawing.Point(3, 330);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(86, 23);
+            this.button15.TabIndex = 0;
+            this.button15.Text = "сохранить";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1094, 515);
+            this.ClientSize = new System.Drawing.Size(1208, 527);
+            this.Controls.Add(this.panelSetting);
             this.Controls.Add(this.panelGame);
             this.Controls.Add(this.panelMain);
             this.MinimumSize = new System.Drawing.Size(1024, 516);
@@ -324,6 +471,8 @@
             this.panelCages.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelSetting.ResumeLayout(false);
+            this.panelSetting.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -352,6 +501,18 @@
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelSetting;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
 

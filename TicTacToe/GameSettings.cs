@@ -2,18 +2,18 @@
 {
     public class GameSettings
     {
-        public NamePlayer WhoFirst = new NamePlayer();
-        public Rate GameField;
-        public int WinStrLength;
-        public int Indents;
-        
-        public GameSettings(int width = 3 , int height = 3, int winStrLength = 3, int indents = 5)
+        public NamePlayer WhoFirst { get; set; }
+        public Rate GameField { get; set; }
+        public int WinStrLength { get; set; }
+        public int Indents { get; set; }
+
+        /*public GameSettings(int width = 3 , int height = 3, int winStrLength = 3, int indents = 5)
         {
             GameField = new Rate(width, height);
             WinStrLength = winStrLength;
             Indents = indents;
             WhoFirst = NamePlayer.Cross;
-        }
+        }*/
     }
     public class Rate
     {
