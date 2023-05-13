@@ -6,6 +6,7 @@
         public Rate GameField;
         public int WinStrLength;
         public int Indents;
+        
         public GameSettings(int width = 3 , int height = 3, int winStrLength = 3, int indents = 5)
         {
             GameField = new Rate(width, height);
@@ -30,4 +31,5 @@
         Сircle,
         Noting
     }
+    
 }

@@ -48,7 +48,7 @@ namespace TicTacToe
         private void button1_Click(object sender, EventArgs e)
         {
             StartGame();
-            game.clear();
+            game.again();
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -130,7 +130,7 @@ namespace TicTacToe
 
         private void button16_Click(object sender, EventArgs e)
         {
-            game.clear();
+            game.again();
             //game.gameState = new WinWindow();
         }
 
@@ -138,10 +138,39 @@ namespace TicTacToe
         {
             //var ob = new NothingState();
             //this.Test("" + game.gameState.ToString() + " " + ob.ToString());
-            if (!(game.gameState is WinWindow))
+            if (!(game.gameState is WinWindow)||(label1.Text != label2.Text || label1.Text != "0"))
             {
                 StartGame();
             }
+            var Tn = imageList2.Images[0];
+        }
+        public void clearLable()
+        {
+            label1.Text = "0";
+            label2.Text = "0";
+        }
+        public void addlable1()
+        {
+            int sh = int.Parse(label1.Text);
+            sh++;
+            label1.Text = sh.ToString();
+        }
+        public void addlable2()
+        {
+            int sh = int.Parse(label2.Text);
+            sh++;
+            label2.Text = sh.ToString();
+            
+        }
+        public List<Image> getImages() 
+        {
+            List<Image> list = new List<Image>();
+            foreach(Image img in imageList2.Images)
+            {
+                list.Add(img);
+            }
+            return list;
+
         }
     }
 

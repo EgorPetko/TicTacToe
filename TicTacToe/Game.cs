@@ -43,7 +43,10 @@ namespace GameNamespace
                     if (cages.Count <= number) return;
                     logicMatrix[i, j] = 0;
                     cages[number].Click += Cage_Click;
-                    GameCage gameCage = new GameCage(cages[number]);
+                    cages[number].BackgroundImageLayout = ImageLayout.Stretch;
+                    cages[number].Text = "";
+                    var listImage = form.getImages();
+                    GameCage gameCage = new GameCage(cages[number], listImage[0], listImage[1], listImage[2]);
                     gameCages.Add(gameCage);
                     gameCageByObject[cages[number]] = gameCage;
                     cagesDict[cages[number++]] = (i, j);
@@ -66,7 +69,7 @@ namespace GameNamespace
             if (NamePlayer.Noting != whoWin)
             {
                 Win();
-                form.Test("win" + whoWin.ToString());
+                //form.Test("win" + whoWin.ToString());
             }
             else
             {
@@ -204,9 +207,32 @@ namespace GameNamespace
             }
             gameState = new WinWindow();
         }
+        public void again()
+        {
+            int number = 0;
+            for (int i = 0; i < settings.GameField.Height; i++)
+            {
+                for (int j = 0; j < settings.GameField.Width; j++)
+                {
+                    if (gameCages.Count <= number) return;
+                    logicMatrix[i, j] = 0;
+                    gameCages[number++].ClearCage();
+
+                }
+            }
+            gameState = new WinWindow();
+            form.clearLable();
+        }
         public void updateScore(NamePlayer whoWin)
         {
-
+            if(whoWin == NamePlayer.Сircle)
+            {
+                form.addlable1();
+            }
+            if (whoWin == NamePlayer.Cross)
+            {
+                form.addlable2();
+            }
         }
 
     }
@@ -234,7 +260,7 @@ namespace GameNamespace
             //game.form.Test(obj.ToString() + " " + gameCage.CageControl.ToString() + " " + gameCage.CageState.ToString());
             if (gameCage.whoseCage != NamePlayer.Noting ) return;
             gameCage.DoСircle();
-            gameCage.CageControl.BackColor = Color.White;
+            //gameCage.CageControl.BackColor = Color.White;
             game.cangeLogicMatrics(obj, NamePlayer.Cross);
             game.gameState = new TurnСircle();
         }
@@ -257,7 +283,7 @@ namespace GameNamespace
             //game.form.Test(obj.ToString() + " " + gameCage.CageControl.ToString());
             if (gameCage.whoseCage != NamePlayer.Noting) return;
             gameCage.DoCross();
-            gameCage.CageControl.BackColor = Color.Blue;
+            //gameCage.CageControl.BackColor = Color.Blue;
             game.cangeLogicMatrics(obj, NamePlayer.Сircle);
             game.gameState = new TurnCross();
 

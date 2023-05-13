@@ -9,9 +9,17 @@ using System.Drawing;
 
 namespace GamePlayButtonNamespace
 {
+   /* public delegate void Update(Image image);*/
     
     public class GameCage
     {
+        /*public Update UpCross;
+        public Update UpCircle;
+        public Update UpNoting;*/
+        public Image imageCross;
+        public Image imageCircle;
+        public Image imageNothing;
+
         public Control CageControl;
         public GameCageState CageState { get; set; }
         public NamePlayer whoseCage = NamePlayer.Noting;
@@ -19,6 +27,15 @@ namespace GamePlayButtonNamespace
         {
             CageControl = control;
             CageState = gameCageState; 
+        }
+        public GameCage(Control control,Image imageCross, Image imageCircle, Image imageNothing)
+        {
+            CageControl = control;
+            CageState = new NothingState();
+            this.imageCross = imageCross;
+            this.imageCircle = imageCircle;
+            this.imageNothing = imageNothing;
+            CageControl.BackgroundImage = imageNothing;
         }
         public GameCage(Control control)
         {
@@ -69,7 +86,8 @@ namespace GamePlayButtonNamespace
         {
             Console.WriteLine("thing");
             gameButton.CageState = new NothingState();
-            gameButton.CageControl.BackColor = Color.Black;
+            gameButton.CageControl.BackgroundImage = gameButton.imageNothing;
+            //gameButton.CageControl.BackColor = Color.Black;
             gameButton.whoseCage = NamePlayer.Noting;
         }
     }
@@ -79,7 +97,8 @@ namespace GamePlayButtonNamespace
         {
             Console.WriteLine("thing");
             gameButton.CageState = new NothingState();
-            gameButton.CageControl.BackColor = Color.Black;
+            gameButton.CageControl.BackgroundImage = gameButton.imageNothing;
+            //gameButton.CageControl.BackColor = Color.Black;
             gameButton.whoseCage = NamePlayer.Noting;
         }
     }
@@ -89,12 +108,14 @@ namespace GamePlayButtonNamespace
         {
             //gameButton.CageControl.BackColor = Color.White;
             gameButton.CageState = new CrossState();
+            gameButton.CageControl.BackgroundImage = gameButton.imageCross;
             gameButton.whoseCage = NamePlayer.Cross;
         }
         public override void DoСircle(GameCage gameButton)
         {
             //gameButton.CageControl.BackColor = Color.Black;
             gameButton.CageState = new СircleState();
+            gameButton.CageControl.BackgroundImage = gameButton.imageCircle;
             gameButton.whoseCage = NamePlayer.Сircle;
         }
     }
