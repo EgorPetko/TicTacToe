@@ -13,7 +13,7 @@ namespace GameNamespace
     {
         public Form1 form;
 
-        public List<GameCage> gameCages;
+        public List<GameCage> gameCages = new List<GameCage>();
         public GameSettings settings;
         public GameState gameState { get; set; }
         public NamePlayer namePlayer { get; set; }
@@ -31,20 +31,24 @@ namespace GameNamespace
             GameCagesConstruct(cages);
 
         }
-        private void GameCagesConstruct(List<Control> cages)
+        public void GameCagesConstruct(List<Control> cages)
         {
-            logicMatrix = new int[settings.GameField.Width, settings.GameField.Height];
+            logicMatrix = new int[5, 5];
             int number = 0;
-            gameCages = new List<GameCage>();
+            gameCages.Clear();
+            //gameCages = new List<GameCage>();
+            //form.Test(settings.GameField.Width.ToString() + " " + settings.GameField.Height.ToString());
             for (int i = 0; i < settings.GameField.Height; i++)
             {
                 for (int j = 0; j < settings.GameField.Width; j++)
                 {
+                    //form.Test(i.ToString() + " " + j.ToString());
                     if (cages.Count <= number) return;
                     logicMatrix[i, j] = 0;
                     cages[number].Click += Cage_Click;
                     cages[number].BackgroundImageLayout = ImageLayout.Stretch;
                     cages[number].Text = "";
+                    cages[number].Visible = true;
                     var listImage = form.getImages();
                     GameCage gameCage = new GameCage(cages[number], listImage[0], listImage[1], listImage[2]);
                     gameCages.Add(gameCage);
@@ -52,7 +56,10 @@ namespace GameNamespace
                     cagesDict[cages[number++]] = (i, j);
                 }
             }
-            
+            while (!(cages.Count <= number))
+            {
+                cages[number++].Visible = false;
+            } 
             /*foreach (Control to in cages)
             {
                 gameCages.Add(new GameCage(to));
@@ -98,12 +105,15 @@ namespace GameNamespace
         }
         public void ReSize()
         {
-            Rate sizePanel = new Rate(form.panelCages.Width, form.panelCages.Height);
+            Rate sizePanel = new Rate(form.panelCages.Width, form.panelCages.Height );
 
             int widthCage = (sizePanel.Width - (settings.GameField.Width + 1) * settings.Indents) / settings.GameField.Width;
             int heightCage = (sizePanel.Height - (settings.GameField.Height + 1) * settings.Indents) / settings.GameField.Height;
             int x = 0, y = 0;
             int number = 0;
+            //form.Test(settings.GameField.Width.ToString() + " " + settings.GameField.Height.ToString());
+            int sh = 0;
+            form.Test(form.panelCages.Width.ToString() + " " + form.panelCages.Height.ToString());
             for (int i = 0; i < settings.GameField.Height; i++)
             {
                 y += settings.Indents;
@@ -111,14 +121,21 @@ namespace GameNamespace
                 {
 
                     x += settings.Indents;
-                    if (gameCages.Count <= number) return;
-
+                    if (gameCages.Count <= number) {form.Test("ReSize"); return; }
+                    sh++;
                     gameCages[number].CageControl.Location = new Point(x, y);
+                    form.Test(sh.ToString() + " " + x.ToString() + " x y " + y.ToString() + " " + gameCages[number].CageControl.ToString());
+                    //form.Test();
+                    gameCages[number].CageControl.Visible = true;
                     gameCages[number++].CageControl.Size = new Size(widthCage, heightCage);
                     x += widthCage;
                 }
                 y += heightCage;
                 x = 0;
+            }
+            while (!(gameCages.Count <= number))
+            {
+                gameCages[number++].CageControl.Visible = false;
             }
         }
         public NamePlayer WhoWin(object obj)
@@ -127,61 +144,49 @@ namespace GameNamespace
             var IJ = cagesDict[obj];
             int I = IJ.Item1, J = IJ.Item2;
             int w = logicMatrix[I, J],dl = settings.WinStrLength;
-            int i = I, j = J,sh = 0;
+
             if (w == 2) whoPlay = NamePlayer.Сircle;
             else
             if (w == 1) whoPlay = NamePlayer.Cross;
             else whoPlay = NamePlayer.Noting;
+            int sh = 0;
+            /*string str = "";
+            foreach (int to in logicMatrix)
+            {
+                str += to.ToString() + " ";
+            }
+            form.Test(str);*/
+            if (detour(1, 1, I, J) || detour(-1, 1, I, J) || detour(1, 0, I, J) || detour(0, 1, I, J)) return whoPlay;
 
-            while (i>0&&j>0)
-            {
-                i--;
-                j--;
-            }
 
-            while (j < settings.GameField.Width && i < settings.GameField.Height&& logicMatrix[i, j] == w) 
-            {
-                sh++;
-                i++;
-                j++;
-            }
-            if (sh >= dl) return whoPlay;
-            i = I; j = J; sh = 0;
-            while (i < settings.GameField.Height - 1 && j > 0)
-            {
-                i++;
-                j--;
-            }
-            while (j < settings.GameField.Width&& i >= 0 && logicMatrix[i, j] == w)
-            {
-                sh++;
-                i--;
-                j++;
-            }
-            if (sh >= dl) return whoPlay;
-            i = I; j = J; sh = 0;
-            while (i > 0)
-            {
-                i--;
-            }
-            while (i < settings.GameField.Height&& logicMatrix[i, j] == w)
-            {
-                sh++;
-                i++;
-            }
-            if (sh >= dl) return whoPlay;
-            i = I; j = J; sh = 0;
-            while (j > 0)
-            {
-                j--;
-            }
-            while (j < settings.GameField.Width && logicMatrix[i, j] == w)
-            {
-                sh++;
-                j++;
-            }
-            if (sh >= dl) return whoPlay;
             return NamePlayer.Noting;
+
+            bool detour(int AddI = 0 ,int AddJ = 0, int i = 0,int j = 0)
+            {
+                int Sh = 0;
+                //sh++;
+                while (i - AddI >= 0 && j - AddJ >= 0 && j - AddJ < settings.GameField.Width && i - AddI < settings.GameField.Height) 
+                {
+                    i -= AddI;
+                    j -= AddJ;
+                }
+                //form.Test(i.ToString() + " " + j.ToString());
+                //sh++;
+                while (i >= 0 && j >= 0 && j < settings.GameField.Width && i < settings.GameField.Height) 
+                {
+                    //form.Test(i.ToString() + " " + j.ToString());
+                    //form.Test(sh.ToString());
+                    if (logicMatrix[i, j] == w) Sh++;
+                    else if (Sh < dl)
+                    {
+                        Sh = 0;
+                    }
+                    i += AddI;
+                    j += AddJ;
+                }
+                if (Sh >= dl) return true;
+                return false;
+            }
         } 
         public void NextTurn(object obj)
         {
@@ -215,6 +220,7 @@ namespace GameNamespace
                 {
                     if (gameCages.Count <= number) return;
                     logicMatrix[i, j] = 0;
+                    //form.Test(gameCages.Count.ToString() + " " + number.ToString());
                     gameCages[number++].ClearCage();
 
                 }

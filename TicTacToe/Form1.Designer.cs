@@ -136,7 +136,7 @@
             this.panelGame.Controls.Add(this.panel1);
             this.panelGame.Location = new System.Drawing.Point(320, 0);
             this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(876, 93);
+            this.panelGame.Size = new System.Drawing.Size(851, 387);
             this.panelGame.TabIndex = 3;
             // 
             // panelCages
@@ -154,9 +154,9 @@
             this.panelCages.Controls.Add(this.button12);
             this.panelCages.Controls.Add(this.button13);
             this.panelCages.Controls.Add(this.button5);
-            this.panelCages.Location = new System.Drawing.Point(254, 3);
+            this.panelCages.Location = new System.Drawing.Point(251, 3);
             this.panelCages.Name = "panelCages";
-            this.panelCages.Size = new System.Drawing.Size(619, 87);
+            this.panelCages.Size = new System.Drawing.Size(590, 381);
             this.panelCages.TabIndex = 10;
             this.panelCages.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panelCages.Resize += new System.EventHandler(this.panelCages_Resize);
@@ -164,7 +164,7 @@
             // button8
             // 
             this.button8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button8.Location = new System.Drawing.Point(51, -58);
+            this.button8.Location = new System.Drawing.Point(147, 179);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(55, 58);
             this.button8.TabIndex = 3;
@@ -174,7 +174,7 @@
             // button7
             // 
             this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button7.Location = new System.Drawing.Point(51, -122);
+            this.button7.Location = new System.Drawing.Point(145, 115);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(56, 58);
             this.button7.TabIndex = 2;
@@ -184,7 +184,7 @@
             // button11
             // 
             this.button11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button11.Location = new System.Drawing.Point(113, -58);
+            this.button11.Location = new System.Drawing.Point(208, 179);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(55, 58);
             this.button11.TabIndex = 6;
@@ -194,7 +194,7 @@
             // button6
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.Location = new System.Drawing.Point(174, -186);
+            this.button6.Location = new System.Drawing.Point(268, 51);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(57, 58);
             this.button6.TabIndex = 0;
@@ -204,7 +204,7 @@
             // button9
             // 
             this.button9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button9.Location = new System.Drawing.Point(174, -58);
+            this.button9.Location = new System.Drawing.Point(268, 179);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(57, 58);
             this.button9.TabIndex = 4;
@@ -215,7 +215,7 @@
             // 
             this.button10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button10.Location = new System.Drawing.Point(174, -122);
+            this.button10.Location = new System.Drawing.Point(268, 115);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(57, 58);
             this.button10.TabIndex = 5;
@@ -226,7 +226,7 @@
             // 
             this.button12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button12.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button12.Location = new System.Drawing.Point(110, -122);
+            this.button12.Location = new System.Drawing.Point(205, 115);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(58, 58);
             this.button12.TabIndex = 7;
@@ -236,7 +236,7 @@
             // button13
             // 
             this.button13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button13.Location = new System.Drawing.Point(113, -186);
+            this.button13.Location = new System.Drawing.Point(205, 51);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(55, 58);
             this.button13.TabIndex = 8;
@@ -246,7 +246,7 @@
             // button5
             // 
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.Location = new System.Drawing.Point(51, -186);
+            this.button5.Location = new System.Drawing.Point(147, 51);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(56, 58);
             this.button5.TabIndex = 1;
@@ -265,7 +265,7 @@
             this.panel1.Controls.Add(this.button16);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(245, 87);
+            this.panel1.Size = new System.Drawing.Size(245, 381);
             this.panel1.TabIndex = 9;
             // 
             // label2
@@ -273,7 +273,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(206, 48);
+            this.label2.Location = new System.Drawing.Point(206, 342);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 39);
             this.label2.TabIndex = 6;
@@ -284,7 +284,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 48);
+            this.label1.Location = new System.Drawing.Point(3, 342);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 39);
             this.label1.TabIndex = 5;
@@ -332,9 +332,9 @@
             this.panelSetting.Controls.Add(this.button18);
             this.panelSetting.Controls.Add(this.button17);
             this.panelSetting.Controls.Add(this.button15);
-            this.panelSetting.Location = new System.Drawing.Point(320, 99);
+            this.panelSetting.Location = new System.Drawing.Point(869, 405);
             this.panelSetting.Name = "panelSetting";
-            this.panelSetting.Size = new System.Drawing.Size(882, 356);
+            this.panelSetting.Size = new System.Drawing.Size(333, 50);
             this.panelSetting.TabIndex = 4;
             // 
             // radioButton2
@@ -345,10 +345,10 @@
             this.radioButton2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioButton2.Location = new System.Drawing.Point(3, 39);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(178, 20);
+            this.radioButton2.Size = new System.Drawing.Size(180, 20);
             this.radioButton2.TabIndex = 10;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Крестики ходят нолики";
+            this.radioButton2.Text = "Крестики ходят пеовые";
             this.radioButton2.UseVisualStyleBackColor = false;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
@@ -422,7 +422,7 @@
             // button18
             // 
             this.button18.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button18.Location = new System.Drawing.Point(324, 330);
+            this.button18.Location = new System.Drawing.Point(49, 24);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(243, 23);
             this.button18.TabIndex = 2;
@@ -433,17 +433,18 @@
             // button17
             // 
             this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button17.Location = new System.Drawing.Point(759, 330);
+            this.button17.Location = new System.Drawing.Point(210, 24);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(120, 23);
             this.button17.TabIndex = 1;
             this.button17.Text = "по умолчанию";
             this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // button15
             // 
             this.button15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button15.Location = new System.Drawing.Point(3, 330);
+            this.button15.Location = new System.Drawing.Point(3, 24);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(86, 23);
             this.button15.TabIndex = 0;

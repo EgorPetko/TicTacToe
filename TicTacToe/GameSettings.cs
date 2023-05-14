@@ -7,13 +7,20 @@
         public int WinStrLength { get; set; }
         public int Indents { get; set; }
 
-        /*public GameSettings(int width = 3 , int height = 3, int winStrLength = 3, int indents = 5)
+        public GameSettings()
         {
-            GameField = new Rate(width, height);
-            WinStrLength = winStrLength;
-            Indents = indents;
+            GameField = new Rate(3, 3);
+            WinStrLength = 3;
+            Indents = 5;
             WhoFirst = NamePlayer.Cross;
-        }*/
+        }
+        public GameSettings(GameSettings gameSettings)
+        {
+            GameField = gameSettings.GameField;
+            WinStrLength = gameSettings.WinStrLength;
+            Indents = gameSettings.Indents;
+            WhoFirst = gameSettings.WhoFirst;
+        }
     }
     public class Rate
     {
