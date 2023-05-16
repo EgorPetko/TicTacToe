@@ -21,16 +21,17 @@ namespace TicTacToe
         List<Control> Cages;
         public ProgramState programState { get; set; }
         string fileName = "D:\\Projects\\TicTacToe\\TicTacToe\\Setting.json";
-        string fileTest = "D:\\Projects\\TicTacToe\\TicTacToe\\Test.json";
+        //string fileTest = "D:\\Projects\\TicTacToe\\TicTacToe\\Test.json";
         public Form1()
         {
             InitializeComponent();
+            //Test("wtf");
             //string str = File.ReadAllText(fileName);
             Button buttons = new Button();
             //CloseMainMenu();
             //panelGame.Controls.Add(buttons);
             GameSettings setting = JsonSerializer.Deserialize<GameSettings>(File.ReadAllText(fileName));
-            gameSettings = new GameSettings(setting);
+            
             if(setting.WhoFirst == NamePlayer.Cross)
             {
                 radioButton1.Checked = false;
@@ -42,6 +43,7 @@ namespace TicTacToe
                 radioButton2.Checked = false;
                 radioButton1.Checked = true;
             }
+            //Test("wtf");
             textBox1.Text = setting.GameField.Width.ToString();
             textBox2.Text = setting.GameField.Height.ToString();
             textBox3.Text = setting.WinStrLength.ToString();
@@ -51,7 +53,10 @@ namespace TicTacToe
             {
                 Cages.Add(con);
             }
+
+            gameSettings = new GameSettings(setting);
             game = new Game(this, Cages,setting);
+            //Test("wtf");
             panelMain.Size = this.Size;
             panelGame.Visible = false;
             panelSetting.Visible = false;
@@ -61,11 +66,11 @@ namespace TicTacToe
             var button = new Button();
             panelGame.Dock = DockStyle.Fill;
             panelSetting.Dock = DockStyle.Fill;
+            panelMain.Dock = DockStyle.Fill;
             addCages();
             game.ReSize();
             programState = new MainMenuState();
-            //game.settings.Indents = 4;
-
+            //Test("wtf");
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -73,8 +78,8 @@ namespace TicTacToe
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            StartGame();
             game.again();
+            StartGame();
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -88,8 +93,24 @@ namespace TicTacToe
         private bool trueClose()
         {
             var result = MessageBox.Show("Вы действительно хотите закрыть программу?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.OK) return false;
-            return true;
+            if (result != DialogResult.OK) return true;
+            if (game != null)
+            {
+                //if (game.NeedSave != game.settings) Test("norm");
+                //if (game.NeedSave != game.settings) Test("norm");
+                //if (game.NeedSave != gameSettings) Test("norm+");
+                //else Test("not");
+                string str = JsonSerializer.Serialize(game.NeedSave);
+
+                File.WriteAllText(fileName, str);
+                /*str = JsonSerializer.Serialize(game.settings);
+                Test(str);
+                str = JsonSerializer.Serialize(gameSettings);
+                Test(str);
+                str = JsonSerializer.Serialize(game.NeedSave);
+                Test(str);*/
+            }
+            return false;
         }
 
         public void CloseMainMenu()
@@ -98,6 +119,7 @@ namespace TicTacToe
         }
         public void CloseGameMenu()
         {
+            //addCages();
             panelGame.Visible = false;
         }
         public void CloseSettingMenu()
@@ -106,6 +128,7 @@ namespace TicTacToe
         }
         public void OpenMainMenu()
         {
+            //addCages();
             panelMain.Visible = true;
             if ((!(game.gameState is WinWindow) || (label1.Text != label2.Text || label1.Text != "0")))
             {
@@ -122,50 +145,36 @@ namespace TicTacToe
                 swap(button4, button3);
             }
         }
+        
+        public void OpenGameMenu()
+        {
+            //addCages();
+            panelGame.Visible = true;
+        }
+        public void OpenSettingMenu()
+        {
+            updatePanelSettings(game.NeedSave);
+            panelSetting.Visible = true;
+        }
         public void addCages()
         {
-            while (Cages.Count <= game.settings.GameField.Width * game.settings.GameField.Height)
+            //if (Cages.Count >= game.settings.GameField.Width * game.settings.GameField.Height) return;
+            while (Cages.Count < game.settings.GameField.Width * game.settings.GameField.Height)
             {
                 Button buttons = new Button();
-                //this.Controls.Add(buttons);
                 buttons.Visible = true;
                 buttons.BackColor = Color.LightGray;
                 buttons.ForeColor = Color.DarkGray;
                 buttons.Location = new Point(10, 10);
                 buttons.Text = "Привет";
-                Test(Cages.Count.ToString());
-                //panelCell.Controls.Add(button);
+
                 panelCages.Controls.Add(buttons);
                 Cages.Add(buttons);
-                //Invalidate();
-                //buttons.Invalidate();
-                //Test("ok?");
-                //JsonSerializer.Serialize(button);
+
             }
             game.GameCagesConstruct(Cages);
-            int sh = 0;
-            foreach (GameCage cage in game.gameCages)
-            {
-                sh++;
-            }
-            Test(sh.ToString() + " ww");
-        }
-        public void OpenGameMenu()
-        {
-            panelGame.Visible = true;
-            //Test(Cages.Count.ToString()); 
-            //Test(game.settings.GameField.Width.ToString() + " " + game.settings.GameField.Height.ToString());
-            //if (!(Cages.Count <= game.settings.GameField.Width * game.settings.GameField.Height)) return;
-            addCages();
-            /*while (Cages.Count > game.settings.GameField.Width * game.settings.GameField.Height)
-            {
-                //panelGame.Controls.RemoveAt(0);
-            }*/
+            //game.gameState = new WinWindow();
 
-        }
-        public void OpenSettingMenu()
-        {
-            panelSetting.Visible = true;
         }
         public void Test(string s)
         {
@@ -222,7 +231,8 @@ namespace TicTacToe
         }
         private void button16_Click(object sender, EventArgs e)
         {
-            game.again();
+            game.clear();
+            addCages();
             //game.gameState = new WinWindow();
         }
 
@@ -278,12 +288,8 @@ namespace TicTacToe
         }
         private void button15_Click(object sender, EventArgs e)
         {
-            //game.settings
-            //Test(gameSettings.WinStrLength.ToString());
-            string str = JsonSerializer.Serialize(gameSettings);
-            File.WriteAllText(fileName, str);
-            game.settings = new GameSettings(gameSettings);
-
+            //Test("wtf");
+            game.NeedSave = new GameSettings(gameSettings);
         }
         GameSettings gameSettings = new GameSettings();
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -296,34 +302,99 @@ namespace TicTacToe
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            if (game == null) return;
             bool fl = int.TryParse(textBox1.Text,out int kol);
             if (!fl) return;
-            if (kol > 0 && kol < 5)
+            if (kol > 0 && kol <= game.NeedSave.MaxGameField.Width)
             {
                 gameSettings.GameField.Width = kol;
+            }
+            else if (kol > game.NeedSave.MaxGameField.Width)
+            {
+                textBox1.Text = game.NeedSave.MaxGameField.Width.ToString();
+            }
+            else
+            {
+                textBox1.Text = "1";
             }
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            if (game == null) return;
             bool fl = int.TryParse(textBox2.Text, out int kol);
             if (!fl) return;
-            if (kol > 0 && kol < 5)
+            if (kol > 0 && kol <= game.NeedSave.MaxGameField.Height)
             {
                 gameSettings.GameField.Height = kol;
+            }
+            else if (kol > game.NeedSave.MaxGameField.Height)
+            {
+                textBox2.Text = game.NeedSave.MaxGameField.Height.ToString();
+            }
+            else
+            {
+                textBox2.Text = "1";
             }
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
+            if (game == null) return;
             bool fl = int.TryParse(textBox3.Text, out int kol);
             if (!fl) return;
-            if (kol > 0 && kol < 5)
+            int MaxGameField = Math.Max(game.NeedSave.GameField.Width, game.NeedSave.GameField.Height);
+            if (kol > 0 && kol <=MaxGameField)
             {
                 gameSettings.WinStrLength = kol;
+            }
+            else if (kol > MaxGameField)
+            {
+                textBox3.Text = MaxGameField.ToString();
+            }
+            else
+            {
+                textBox3.Text = "1";
             }
         }
         private void button17_Click(object sender, EventArgs e)
         {
+            //Test("wtf");
+            game.NeedSave = new GameSettings(game.settings.MaxGameField);
+            //game.NeedSave = new GameSettings();
+            //Test("wtf");
+            gameSettings = new GameSettings(game.NeedSave);
+            //Test("wtf");
+            updatePanelSettings(game.NeedSave);
+            //Test("wtf");
+        }
+        private void updatePanelSettings(GameSettings settings)
+        {
+            //if (settings == null) return;
 
+            if(settings.WhoFirst == NamePlayer.Cross)
+            {
+                radioButton1.Checked = false;
+                radioButton2.Checked = true;
+            }
+            else
+            {
+                radioButton2.Checked = false;
+                radioButton1.Checked = true;
+            }
+            textBox1.Text = settings.GameField.Width.ToString();
+            textBox2.Text = settings.GameField.Height.ToString();
+            textBox3.Text = settings.WinStrLength.ToString();
+            /////////////+-asd ;lkjhgfdsa
+        }
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            game.again();
+            EndGame();
+            StartGame();
         }
     }
 

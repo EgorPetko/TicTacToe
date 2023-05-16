@@ -15,6 +15,7 @@ namespace GameNamespace
 
         public List<GameCage> gameCages = new List<GameCage>();
         public GameSettings settings;
+        public GameSettings NeedSave;
         public GameState gameState { get; set; }
         public NamePlayer namePlayer { get; set; }
         private int[,] logicMatrix;
@@ -24,7 +25,8 @@ namespace GameNamespace
         {
             //this.gameState = gameState;
             this.form = form;
-            this.settings = settings;
+            this.settings = new GameSettings(settings);
+            this.NeedSave = new GameSettings(settings);
             gameState = new WinWindow();
             namePlayer = NamePlayer.Noting;
             //gameState.NextTurn(this,null);
@@ -32,8 +34,8 @@ namespace GameNamespace
 
         }
         public void GameCagesConstruct(List<Control> cages)
-        {
-            logicMatrix = new int[5, 5];
+        {/////////////////////w
+            logicMatrix = new int[settings.MaxGameField.Height + 1, settings.MaxGameField.Width + 1];
             int number = 0;
             gameCages.Clear();
             //gameCages = new List<GameCage>();
@@ -45,7 +47,7 @@ namespace GameNamespace
                     //form.Test(i.ToString() + " " + j.ToString());
                     if (cages.Count <= number) return;
                     logicMatrix[i, j] = 0;
-                    cages[number].Click += Cage_Click;
+                    if(cagesDict.ContainsKey(cages[number]) == false) cages[number].Click += Cage_Click;
                     cages[number].BackgroundImageLayout = ImageLayout.Stretch;
                     cages[number].Text = "";
                     cages[number].Visible = true;
@@ -76,21 +78,24 @@ namespace GameNamespace
             if (NamePlayer.Noting != whoWin)
             {
                 Win();
-                //form.Test("win" + whoWin.ToString());
+                form.Test("win" + whoWin.ToString());
             }
             else
             {
                 bool fl = true;
-                foreach(int to in logicMatrix)
+                for(int i = 0; i < settings.GameField.Height; ++i)
                 {
-                    if (to == 0) fl = false;
+                    for (int j = 0; j < settings.GameField.Width; ++j)
+                    {
+                        if (logicMatrix[i,j]==0) fl = false;
+                    }
                 }
                 if (fl)
                 {
                     clear();
                 }
             }
-
+            //form.Test("win" + whoWin.ToString());
         }
         public bool CheckLogicMatrixByObject(object obj)
         {
@@ -113,7 +118,7 @@ namespace GameNamespace
             int number = 0;
             //form.Test(settings.GameField.Width.ToString() + " " + settings.GameField.Height.ToString());
             int sh = 0;
-            form.Test(form.panelCages.Width.ToString() + " " + form.panelCages.Height.ToString());
+            //form.Test(form.panelCages.Width.ToString() + " " + form.panelCages.Height.ToString());
             for (int i = 0; i < settings.GameField.Height; i++)
             {
                 y += settings.Indents;
@@ -124,7 +129,7 @@ namespace GameNamespace
                     if (gameCages.Count <= number) {form.Test("ReSize"); return; }
                     sh++;
                     gameCages[number].CageControl.Location = new Point(x, y);
-                    form.Test(sh.ToString() + " " + x.ToString() + " x y " + y.ToString() + " " + gameCages[number].CageControl.ToString());
+                    //form.Test(sh.ToString() + " " + x.ToString() + " x y " + y.ToString() + " " + gameCages[number].CageControl.ToString());
                     //form.Test();
                     gameCages[number].CageControl.Visible = true;
                     gameCages[number++].CageControl.Size = new Size(widthCage, heightCage);
@@ -213,6 +218,8 @@ namespace GameNamespace
         }
         public void again()
         {
+            settings = new GameSettings(NeedSave);
+            form.addCages();
             int number = 0;
             for (int i = 0; i < settings.GameField.Height; i++)
             {
@@ -226,7 +233,10 @@ namespace GameNamespace
                 }
             }
             gameState = new WinWindow();
-            form.clearLable();
+            form.clearLable();//
+            //settings.GameField.Width = NeedSave.GameField.Width;
+            //settings.GameField.Height = NeedSave.GameField.Height;
+            
         }
         public void updateScore(NamePlayer whoWin)
         {
