@@ -71,6 +71,10 @@ namespace TicTacToe
             game.ReSize();
             programState = new MainMenuState();
             //Test("wtf");
+
+            this.WindowState = FormWindowState.Maximized;
+
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -357,14 +361,11 @@ namespace TicTacToe
         }
         private void button17_Click(object sender, EventArgs e)
         {
-            //Test("wtf");
-            game.NeedSave = new GameSettings(game.settings.MaxGameField);
-            //game.NeedSave = new GameSettings();
-            //Test("wtf");
-            gameSettings = new GameSettings(game.NeedSave);
-            //Test("wtf");
-            updatePanelSettings(game.NeedSave);
-            //Test("wtf");
+ 
+            gameSettings = new GameSettings(game.settings.MaxGameField);
+
+            updatePanelSettings(gameSettings);
+
         }
         private void updatePanelSettings(GameSettings settings)
         {
@@ -395,6 +396,11 @@ namespace TicTacToe
             game.again();
             EndGame();
             StartGame();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

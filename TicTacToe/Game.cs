@@ -78,7 +78,7 @@ namespace GameNamespace
             if (NamePlayer.Noting != whoWin)
             {
                 Win();
-                form.Test("win" + whoWin.ToString());
+                //form.Test("win" + whoWin.ToString());
             }
             else
             {

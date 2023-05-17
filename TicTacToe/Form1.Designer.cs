@@ -47,6 +47,7 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button19 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
@@ -64,7 +65,6 @@
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
             this.panelGame.SuspendLayout();
             this.panelCages.SuspendLayout();
@@ -87,7 +87,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(66, 125);
+            this.button4.Location = new System.Drawing.Point(66, 118);
             this.button4.MinimumSize = new System.Drawing.Size(185, 74);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(185, 74);
@@ -99,7 +99,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(66, 280);
+            this.button3.Location = new System.Drawing.Point(66, 278);
             this.button3.MinimumSize = new System.Drawing.Size(185, 74);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(185, 74);
@@ -111,7 +111,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(66, 202);
+            this.button1.Location = new System.Drawing.Point(66, 198);
             this.button1.MinimumSize = new System.Drawing.Size(185, 74);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(185, 74);
@@ -123,7 +123,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(66, 47);
+            this.button2.Location = new System.Drawing.Point(66, 38);
             this.button2.MinimumSize = new System.Drawing.Size(185, 74);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(185, 74);
@@ -275,6 +275,16 @@
             this.panel1.Size = new System.Drawing.Size(245, 381);
             this.panel1.TabIndex = 9;
             // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(3, 11);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(152, 41);
+            this.button19.TabIndex = 9;
+            this.button19.Text = "Начать новую игру";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -362,7 +372,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(193, 136);
+            this.textBox3.Location = new System.Drawing.Point(251, 136);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
             this.textBox3.TabIndex = 9;
@@ -374,13 +384,14 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(10, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 16);
+            this.label5.Size = new System.Drawing.Size(223, 16);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Длина для победы ";
+            this.label5.Text = "Длина необходимая для победны";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(193, 108);
+            this.textBox2.Location = new System.Drawing.Point(251, 105);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 7;
@@ -407,7 +418,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(193, 80);
+            this.textBox1.Location = new System.Drawing.Point(251, 77);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 4;
@@ -460,16 +471,6 @@
             this.button15.Text = "сохранить";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(3, 11);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(152, 41);
-            this.button19.TabIndex = 9;
-            this.button19.Text = "Начать новую игру";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // Form1
             // 
